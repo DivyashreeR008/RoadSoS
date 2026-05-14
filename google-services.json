@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "358951667529",
+    "firebase_url": "https://roadsos-c0f5a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "roadsos-c0f5a",
+    "storage_bucket": "roadsos-c0f5a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358951667529:android:99311c1219d9ae68e9fc98",
+        "android_client_info": {
+          "package_name": "com.sujey.roadsos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqeh88xNVswVMdfaat0AWGzbbjhj9g28s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+
