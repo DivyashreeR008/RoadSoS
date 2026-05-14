@@ -4,14 +4,10 @@ import { db } from '../api/firestore'; // Firebase connection
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 
-
-
 export default function SettingsScreen() {
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(true);
   const [isOfflineEnabled, setIsOfflineEnabled] = useState(true);
   const [isAnonymizedDataEnabled, setIsAnonymizedDataEnabled] = useState(true);
-
-
 
 
   // Load user preferences from the RoadSoS ecosystem
@@ -34,8 +30,6 @@ export default function SettingsScreen() {
   }, []);
 
 
-
-
   // Update preferences in the database
   const updateSetting = async (key, value) => {
     try {
@@ -48,8 +42,6 @@ export default function SettingsScreen() {
       Alert.alert("Sync Error", "Settings saved locally only.");
     }
   };
-
-
 
 
   return (
@@ -73,8 +65,6 @@ export default function SettingsScreen() {
       </View>
 
 
-
-
       {/* 2. Offline Emergency Functionality */}
       <View style={styles.row}>
         <View style={styles.textContainer}>
@@ -92,11 +82,7 @@ export default function SettingsScreen() {
       </View>
 
 
-
-
       <Text style={styles.sectionTitle}>Community & Insights</Text>
-
-
 
 
       {/* 3. Data-Driven Road Safety Insights */}
@@ -116,8 +102,6 @@ export default function SettingsScreen() {
       </View>
 
 
-
-
       <View style={styles.footer}>
         <Text style={styles.footerText}>RoadSoS v1.0.0</Text>
         <Text style={styles.footerText}>Part of the Integrated Rescue Ecosystem [cite: 34]</Text>
@@ -125,8 +109,6 @@ export default function SettingsScreen() {
     </ScrollView>
   );
 }
-
-
 
 
 const styles = StyleSheet.create({
@@ -148,8 +130,3 @@ const styles = StyleSheet.create({
   footer: { marginTop: 30, alignItems: 'center', paddingBottom: 40 },
   footerText: { fontSize: 12, color: '#AAA' }
 });
-
-
-
-
-

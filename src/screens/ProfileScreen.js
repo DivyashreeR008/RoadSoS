@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert, ActivityIndicator, ScrollView } from 'react-native';
 // Switch to Realtime Database as per your RegisterScreen logic
-import { rtdb } from '../api/firestore';
+import { rtdb } from '../api/firestore'; 
 import { ref, get, update } from "firebase/database";
-
 
 export default function ProfileScreen() {
   const [loading, setLoading] = useState(false);
@@ -15,17 +14,16 @@ export default function ProfileScreen() {
     conditions: ''  
   });
 
-
   // Load existing profile from RoadSoS RTDB on mount
   useEffect(() => {
     const fetchProfile = async () => {
       setLoading(true);
       try {
         // Change "default_user" to the actual registered phone number if available
-        const userPhone = profile.phone;
+        const userPhone = profile.phone; 
         const dbRef = ref(rtdb, `users/${userPhone}`);
         const snapshot = await get(dbRef);
-       
+        
         if (snapshot.exists()) {
           const data = snapshot.val();
           setProfile(prev => ({
@@ -46,13 +44,11 @@ export default function ProfileScreen() {
     fetchProfile();
   }, []);
 
-
   const saveProfile = async () => {
     if (!profile.bloodGroup) {
       Alert.alert("Required", "Please enter your blood group for emergency use.");
       return;
     }
-
 
     setLoading(true);
     try {
@@ -71,7 +67,6 @@ export default function ProfileScreen() {
     }
   };
 
-
   if (loading) {
     return (
       <View style={styles.centered}>
@@ -81,12 +76,11 @@ export default function ProfileScreen() {
     );
   }
 
-
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Digital Emergency Health Profile</Text>
       <Text style={styles.subtitle}>These details are shared with responders during an SOS.</Text>
-     
+      
       {/* DISPLAY NAME (Registered) */}
       <Text style={styles.label}>Registered Full Name</Text>
       <TextInput
@@ -94,7 +88,6 @@ export default function ProfileScreen() {
         value={profile.fullName}
         editable={false} // Prevents changing the registered name here
       />
-
 
       {/* BLOOD GROUP (Registered/Editable) */}
       <Text style={styles.label}>Blood Group</Text>
@@ -106,7 +99,6 @@ export default function ProfileScreen() {
         onChangeText={(text) => setProfile({...profile, bloodGroup: text})}
       />
 
-
       <Text style={styles.label}>Known Allergies</Text>
       <TextInput
         placeholder="e.g. Penicillin"
@@ -115,7 +107,6 @@ export default function ProfileScreen() {
         value={profile.allergies}
         onChangeText={(text) => setProfile({...profile, allergies: text})}
       />
-
 
       <Text style={styles.label}>Existing Medical Conditions</Text>
       <TextInput
@@ -126,7 +117,6 @@ export default function ProfileScreen() {
         onChangeText={(text) => setProfile({...profile, conditions: text})}
         multiline
       />
-
 
       <View style={{ marginBottom: 40 }}>
         <Button
@@ -139,21 +129,20 @@ export default function ProfileScreen() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: { padding: 25, backgroundColor: '#fff', flex: 1 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' },
   title: { fontSize: 22, fontWeight: 'bold', color: '#333', marginBottom: 5 },
   subtitle: { fontSize: 13, color: '#666', marginBottom: 25 },
   label: { fontSize: 14, fontWeight: '600', color: '#D32F2F', marginBottom: 5 },
-  input: {
-    borderBottomWidth: 1,
-    borderColor: '#CCC',
-    marginBottom: 25,
-    padding: 8,
+  input: { 
+    borderBottomWidth: 1, 
+    borderColor: '#CCC', 
+    marginBottom: 25, 
+    padding: 8, 
     fontSize: 16,
     color: '#000', // Visibility fix
-    backgroundColor: '#fff'
+    backgroundColor: '#fff' 
   },
   readOnly: {
     color: '#777',
@@ -161,6 +150,3 @@ const styles = StyleSheet.create({
   },
   multiline: { height: 80, textAlignVertical: 'top' }
 });
-
-
-
