@@ -191,7 +191,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#FDFDFD',
-    // ADD THIS LINE FOR WEB BROWSERS:
     height: Platform.OS === 'web' ? '100vh' : '100%',
     overflow: Platform.OS === 'web' ? 'auto' : 'visible',
     position: Platform.OS === 'web' ? 'fixed' : 'relative',
